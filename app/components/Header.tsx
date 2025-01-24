@@ -6,14 +6,14 @@ const Header = () => {
     <header className="bg-black">
       <div className="lg:container mx-auto p-6 flex items-center justify-between">
         <div className="flex items-center gap-20">
-          <NavLink to="/about">
+          <NavLink to="/">
             <img
               src="/logo.jpg"
               alt="company_logo"
               className="h-16 object-contain"
             />
           </NavLink>
-          <NavLink to="/">
+          <NavLink to="/about">
             <img
               src="/collab.png"
               alt="collab"
@@ -30,6 +30,9 @@ const Header = () => {
             </button>
           </div>
         </div>
+        <NavLink to="/contact">
+          <p className="text-white">Contact</p>
+        </NavLink>
         <div className="z-20 flex items-center gap-4">
           <Phone size={16} className="text-white" />
           <a href="tel:+911234567890" className="text-white">

@@ -36,12 +36,32 @@ const About = () => {
       </div>
       <div className="container mx-auto px-4 md:px-6 my-20">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-8">
             Affiliations
           </h2>
+          <div className="flex items-center gap-8 flex-wrap justify-center">
+            <img
+              src="/aff-1.jpeg"
+              className="object-contain h-40 max-w-[30%]"
+            />
+            <img src="/aff-2.jpeg" className="object-contain max-w-[30%]" />
+          </div>
         </div>
       </div>
       <MeetOurTeam />
+      <div className="container mx-auto px-4 md:px-6 my-20">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-8">
+            Certifications
+          </h2>
+          <div className="flex items-center gap-12 flex-wrap justify-center">
+            <h1 className="text-4xl font-bold">ISO 9001</h1>
+            <h1 className="text-4xl font-bold">ISO 45001</h1>
+            <h1 className="text-4xl font-bold">ISO 14001</h1>
+            <img src="/cert.png" className="object-contain max-w-[30%] h-20" />
+          </div>
+        </div>
+      </div>
       <Footer />
     </div>
   );
