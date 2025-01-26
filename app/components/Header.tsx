@@ -4,7 +4,7 @@ import {Phone} from "lucide-react";
 const Header = () => {
   return (
     <header className="bg-black">
-      <div className="lg:container mx-auto p-6 flex items-center justify-between">
+      <div className="lg:container mx-auto p-4 flex items-center justify-between">
         <div className="flex items-center gap-20">
           <NavLink to="/">
             <img
@@ -20,7 +20,7 @@ const Header = () => {
               className="h-12 w-fit object-contain"
             />
           </NavLink>
-          <div className="flex items-center border px-4 py-2">
+          {/* <div className="flex items-center border px-4 py-2">
             <input
               className="outline-none min-w-60 w-full bg-transparent text-white placeholder:text-white placeholder:opacity-55"
               placeholder="Product name.."
@@ -28,11 +28,20 @@ const Header = () => {
             <button className="text-base text-white outline-none">
               Search
             </button>
-          </div>
+          </div> */}
         </div>
-        <NavLink to="/contact">
-          <p className="text-white">Contact</p>
-        </NavLink>
+        <div className="flex gap-8 items-center">
+          <NavLink to="/contact">
+            <p className="text-white hover:underline-offset-4 hover:underline">
+              Contact
+            </p>
+          </NavLink>
+          <NavLink to="/catalogue">
+            <p className="text-white hover:underline-offset-4 hover:underline">
+              Catalogue
+            </p>
+          </NavLink>
+        </div>
         <div className="z-20 flex items-center gap-4">
           <Phone size={16} className="text-white" />
           <a href="tel:+911234567890" className="text-white">

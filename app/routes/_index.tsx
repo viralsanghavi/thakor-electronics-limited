@@ -3,7 +3,6 @@ import {CompaniesShowcase} from "~/components/CompaniesShowCase";
 import {Footer} from "~/components/Footer";
 import Header from "~/components/Header";
 import HeroSection from "~/components/HeroSection";
-import NavigationHeader from "~/components/NavigationHeader";
 import ProductRange from "~/components/ProductRange";
 
 export const meta: MetaFunction = () => {
@@ -26,7 +25,6 @@ export default function Index() {
   return (
     <div className="">
       <Header />
-      <NavigationHeader />
       <HeroSection />
       <ProductRange />
       <CompaniesShowcase

@@ -1,7 +1,6 @@
 import {Footer} from "~/components/Footer";
 import Header from "~/components/Header";
 import {ImageSlider} from "~/components/ImageSlider";
-import NavigationHeader from "~/components/NavigationHeader";
 import {MeetOurTeam} from "~/components/TeamMember";
 
 const slides = [
@@ -30,7 +29,6 @@ const About = () => {
   return (
     <div className="">
       <Header />
-      <NavigationHeader />
       <div className="h-full">
         <ImageSlider slides={slides} />
       </div>
