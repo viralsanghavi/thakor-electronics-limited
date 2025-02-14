@@ -33,8 +33,8 @@ export function CompaniesShowcase({
             <Card
               key={index}
               className={cn(
-                "bg-white dark:bg-gray-800",
-                index === 1 && "lg:transform lg:scale-110"
+                "bg-white dark:bg-gray-800"
+                // index === 1 && "lg:transform lg:scale-110"
               )}
             >
               <CardContent className="flex items-center justify-center p-6">

@@ -29,7 +29,11 @@ const ProductListing = () => {
       <div className="grid xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 place-items-center">
         {filteredProducts.length ? (
           filteredProducts.map((product) => (
-            <Product productName={product.name} key={product.handleId} />
+            <Product
+              productName={product.name}
+              key={product.handleId}
+              imgUrl={product.productImageUrl ?? ""}
+            />
           ))
         ) : (
           <></>

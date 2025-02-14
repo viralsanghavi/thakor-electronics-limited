@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Button} from "./ui/button";
 import CountUp from "react-countup";
+import {NavLink} from "@remix-run/react";
 
 const Hero = () => {
   const lister = [
@@ -51,17 +52,19 @@ const Hero = () => {
     <div className="my-20 relative">
       <img
         src="/hero-bg.jpg"
-        className="w-full relative object-cover max-h-[650px]"
+        className="w-full relative object-cover max-h-[650px] h-full"
       />
-      <div className="bg-white relative w-full container mx-auto -mt-48 p-20">
+      <div className="bg-white relative w-full container mx-auto md:-mt-48 p-20">
         <div className="flex gap-8 flex-wrap items-center justify-center">
           <div className="flex-[.4]">
             <h1 className="font-bold text-2xl mb-8 text-center md:text-left">
               We connect people with technology that makes life better
             </h1>
-            <Button variant="default" className="p-6">
-              Learn more about our company
-            </Button>
+            <NavLink to="/about">
+              <Button variant="default" className="p-6">
+                Learn more about our company
+              </Button>
+            </NavLink>
           </div>
           <div className="flex gap-4 flex-[.6] flex-wrap">
             {lister.map(({title, desc}, index) => (

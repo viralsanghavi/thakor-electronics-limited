@@ -1,6 +1,4 @@
-import {useSearchParams} from "@remix-run/react";
-import {useMemo} from "react";
-import {useProducts} from "~/hooks/useProducts";
+import ImageWithFallback from "./ImageWithFallback";
 import {Button} from "./ui/button";
 import {
   Drawer,
@@ -20,18 +18,23 @@ const Product = ({
     <div>
       <Drawer>
         <DrawerTrigger className="text-left">
-          <img
+          <ImageWithFallback
             src={imgUrl}
+            fallback="products/product.png"
+            alt={imgUrl}
             className="mb-4 w-64 h-64 cursor-pointer object-contain bg-white rounded-sm"
           />
+
           <p className="text-base font-normal">{productName}</p>
         </DrawerTrigger>
         <DrawerContent>
           <DrawerHeader>
-            <DrawerTitle>{productName}</DrawerTitle>
+            <DrawerTitle className="text-6xl">{productName}</DrawerTitle>
             <DrawerDescription>
-              <img
+              <ImageWithFallback
                 src={imgUrl}
+                fallback="products/product.png"
+                alt={imgUrl}
                 className="mb-4 w-96 h-9w-96 cursor-pointer object-contain bg-white rounded-sm"
               />
             </DrawerDescription>

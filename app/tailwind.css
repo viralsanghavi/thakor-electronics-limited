@@ -8,7 +8,6 @@ body {
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
-    font-family: sans-serif;
   }
 }
 
@@ -91,4 +90,43 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@font-face {
+  font-family: "Syne";
+  font-style: normal;
+  font-weight: 400; /* Regular */
+  src: url("/fonts/Syne-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Syne";
+  font-style: normal;
+  font-weight: 500; /* Semibold */
+  src: url("/fonts/Syne-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Syne";
+  font-style: normal;
+  font-weight: 600; /* Semibold */
+  src: url("/fonts/Syne-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Syne";
+  font-style: normal;
+  font-weight: 700; /* Bold */
+  src: url("/fonts/Syne-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Syne";
+  font-style: normal;
+  font-weight: 800; /* Extra Bold */
+  src: url("/fonts/Syne-ExtraBold.ttf") format("truetype");
+}
+
+body {
+  /* This ensures the Syne font is applied to all text by default */
+  font-family: "Syne", sans-serif;
 }

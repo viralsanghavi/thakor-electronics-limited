@@ -6,20 +6,21 @@ import {MeetOurTeam} from "~/components/TeamMember";
 const slides = [
   {
     id: 1,
-    image: "https://picsum.photos/id/237/1200/600/",
+    image:
+      "https://video.wixstatic.com/video/11062b_2b14ae101c714f9ea54f1c0b0d5e4a47/1080p/mp4/file.mp4",
     title: "Welcome to Our Platform",
     description: "Discover amazing features and boost your productivity.",
   },
   {
     id: 2,
-    image: "https://picsum.photos/id/237/1200/600/",
+    image: "/vision.jpg",
     title: "Vision",
     description:
       "To be a global leader in passive electronic components, known for quality and innovation. We empower customers with reliable solutions, driving industry advancements and contributing to the global electronics ecosystem from India.",
   },
   {
     id: 3,
-    image: "https://picsum.photos/id/237/1200/600/",
+    image: "mission.webp",
     title: "Mission",
     description:
       "At Thakor Electronics, we lead in high-quality passive electronic components, made with precision in India. We prioritize innovation, sustainability, and reliability, ensuring superior performance for our customers and building lasting global partnerships through ethical practices",

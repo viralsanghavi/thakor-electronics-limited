@@ -75,8 +75,8 @@ const Catalogue = () => {
                     ) : (
                       <SidebarMenuButton asChild>
                         <NavLink to={{search: `category=${item.url}`}}>
-                          {item.icon && <item.icon className="h-4 w-4" />}
-                          <span className="ml-2">{item.title}</span>
+                          {item.icon && <item.icon className="h-20 w-20" />}
+                          <span className="ml-2 text-2xl">{item.title}</span>
                         </NavLink>
                       </SidebarMenuButton>
                     )}
@@ -101,10 +101,10 @@ function CollapsibleMenuItem({item}: {item: (typeof menuItems)[number]}) {
   return (
     <Collapsible>
       <CollapsibleTrigger asChild>
-        <SidebarMenuButton>
-          {item.icon && <item.icon className="h-4 w-4" />}
-          <span>{item.title}</span>
-          <ChevronDown className="ml-2 ml-auto h-4 w-4" />
+        <SidebarMenuButton className="h-auto">
+          {item.icon && <item.icon className="h-20 w-20" />}
+          <span className="text-2xl">{item.title}</span>
+          <ChevronDown className="ml-20 h-20 w-20" />
         </SidebarMenuButton>
       </CollapsibleTrigger>
       <CollapsibleContent>
@@ -112,7 +112,10 @@ function CollapsibleMenuItem({item}: {item: (typeof menuItems)[number]}) {
           {item.items?.map((subItem) => (
             <SidebarMenuSubItem key={subItem.title}>
               <SidebarMenuSubButton asChild>
-                <NavLink to={{search: `category=${subItem.url}`}}>
+                <NavLink
+                  to={{search: `category=${subItem.url}`}}
+                  className="text-2xl"
+                >
                   {subItem.title}
                 </NavLink>
               </SidebarMenuSubButton>
