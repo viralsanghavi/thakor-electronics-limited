@@ -1,7 +1,7 @@
-import {useProducts} from "~/hooks/useProducts";
-import Product from "./Product";
 import {useSearchParams} from "@remix-run/react";
 import {useMemo} from "react";
+import {useProducts} from "~/hooks/useProducts";
+import Product from "./Product";
 
 const ProductListing = () => {
   const products = useProducts();

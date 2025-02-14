@@ -7,7 +7,7 @@ import ProductRange from "~/components/ProductRange";
 
 export const meta: MetaFunction = () => {
   return [
-    {title: "New Remix App"},
+    {title: "Thakor Electronics"},
     {name: "description", content: "Thakor Electronics!"},
   ];
 };
