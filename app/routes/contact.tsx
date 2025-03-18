@@ -1,17 +1,20 @@
 import {Mail, MapPin, Phone} from "lucide-react";
 import React, {useState} from "react";
+import "react-phone-number-input/style.css";
 import {Footer} from "~/components/Footer";
 import Header from "~/components/Header";
 import {Button} from "~/components/ui/button";
 import {Card} from "~/components/ui/card";
 import {Input} from "~/components/ui/input";
-import {SidebarSeparator} from "~/components/ui/sidebar";
 import {Textarea} from "~/components/ui/textarea";
 import {Toaster} from "~/components/ui/toaster";
 import {toast} from "~/hooks/use-toast";
+import PhoneInput from "react-phone-number-input";
 
 const Contact = () => {
+  const [phoneNumber, setPhoneNumber] = useState();
   const [name, setName] = useState("");
+  const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
@@ -24,6 +27,8 @@ const Contact = () => {
       description: "We've received your message and will get back to you soon.",
     });
     setName("");
+    setPhoneNumber(null as any);
+    setCompanyName("");
     setEmail("");
     setMessage("");
   };
@@ -45,6 +50,34 @@ const Contact = () => {
             </div>
             <div className="mx-auto max-w-[500px] mt-8">
               <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label
+                    htmlFor="companyName"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  >
+                    Company name
+                  </label>
+                  <Input
+                    id="companyName"
+                    placeholder="Company name"
+                    value={companyName}
+                    onChange={(e) => setCompanyName(e.target.value)}
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Phone Number
+                  </label>
+                  <PhoneInput
+                    inputComponent={Input}
+                    className="p-4"
+                    placeholder="Enter phone number"
+                    value={phoneNumber}
+                    onChange={(a) => console.log(a)}
+                  />
+                </div>
+
                 <div>
                   <label
                     htmlFor="name"
@@ -98,7 +131,7 @@ const Contact = () => {
             </div>
           </div>
           <Card className="p-8 max-w-xl">
-            <h3 className="font-bold text-xl mb-4">CORPORATE HEADQUARTERS</h3>
+            <h3 className="font-bold text-xl mb-4">CORPORATE/FACTORY HEADQUARTERS</h3>
             <ul className="space-y-2">
               <li className="flex items-center">
                 <Mail size={16} className="mr-2" />
@@ -132,7 +165,19 @@ const Contact = () => {
                   target="_blank"
                 >
                   7th Floor, B Wing, Neelkanth Corporate Park, 08, Kirol
-                  Village, W, Vidyavihar, Mumbai, Maharashtra 400086{" "}
+                  Village, W, Vidyavihar, Mumbai, Maharashtra 400086
+                </a>
+              </li>
+              <li className="flex items-start">
+                <MapPin size={36} className="mr-2" />
+                <a
+                  href="https://maps.app.goo.gl/T1sJg4hfzyXqupu99"
+                  referrerPolicy="no-referrer"
+                  target="_blank"
+                >
+                  P-2, Shree Raj Laxmi Hi-Tech Textile Park, P-1, Bye Pass
+                  Village:, Sonale Tal:Bhiwandi, Bhiwandi, Shivnagar,
+                  Maharashtra 421308
                 </a>
               </li>
             </ul>

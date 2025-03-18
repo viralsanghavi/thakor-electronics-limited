@@ -4,6 +4,7 @@ import {Footer} from "~/components/Footer";
 import Header from "~/components/Header";
 import {ImageSlider} from "~/components/ImageSlider";
 import ProductRange from "~/components/ProductRange";
+import Testimonials from "~/components/Testimonials";
 
 export const meta: MetaFunction = () => {
   return [
@@ -59,6 +60,7 @@ export default function Index() {
         description="We're proud to work with some of the most innovative companies in the world, helping them achieve their goals and drive success."
         companies={companies}
       />
+      <Testimonials />
       <Footer />
     </div>
   );

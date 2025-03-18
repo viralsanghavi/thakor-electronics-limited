@@ -72,7 +72,11 @@ export function ImageSlider({slides, interval = 5000}: ImageSliderProps) {
         onValueChange={(value) => setCurrentSlide(Number.parseInt(value))}
         className="h-full "
       >
-        <TabsList className="mt-4 grid w-full grid-cols-1 sm:grid-cols-3 gap-8 bg-transparent h-full">
+        <TabsList
+          className={`mt-4 grid w-full grid-cols-1 ${
+            slides.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-4"
+          } gap-8 bg-transparent h-full`}
+        >
           {slides.map((slide, index) => (
             <TabsTrigger
               key={slide.id}

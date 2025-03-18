@@ -130,3 +130,7 @@ body {
   /* This ensures the Syne font is applied to all text by default */
   font-family: "Syne", sans-serif;
 }
+
+.PhoneInput {
+  padding: 14px;
+}
