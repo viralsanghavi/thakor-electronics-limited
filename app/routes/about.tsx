@@ -2,6 +2,7 @@ import {Footer} from "~/components/Footer";
 import Header from "~/components/Header";
 import {ImageSlider} from "~/components/ImageSlider";
 import {MeetOurTeam} from "~/components/TeamMember";
+import Timeline from "~/components/Timeline";
 
 const slides = [
   {
@@ -40,6 +41,7 @@ const About = () => {
       <div className="h-full">
         <ImageSlider slides={slides} />
       </div>
+      <Timeline />
       <div className="container mx-auto px-4 md:px-6 my-20">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-8">
