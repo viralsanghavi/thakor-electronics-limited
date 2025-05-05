@@ -56,7 +56,7 @@ export function ImageSlider({slides, interval = 5000}: ImageSliderProps) {
             <div className="absolute z-0 inset-0 bg-white w-[35%]" />
             <div className="absolute inset-y-0 left-0 flex items-center p-4 sm:p-6 md:p-8 text-[#185BAA] max-w-[90%] sm:max-w-[80%] md:max-w-lg">
               <div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 text-[#185BAA]">
+                <h2 className="text-lg sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 text-[#185BAA]">
                   {slide.title}
                 </h2>
                 <p className="text-sm sm:text-base md:text-lg text-[#185BAA]">
@@ -67,7 +67,7 @@ export function ImageSlider({slides, interval = 5000}: ImageSliderProps) {
           </div>
         ))}
       </div>
-      <Tabs
+      {/* <Tabs
         value={currentSlide.toString()}
         onValueChange={(value) => setCurrentSlide(Number.parseInt(value))}
         className="h-full "
@@ -94,7 +94,7 @@ export function ImageSlider({slides, interval = 5000}: ImageSliderProps) {
             </TabsTrigger>
           ))}
         </TabsList>
-      </Tabs>
+      </Tabs> */}
     </div>
   );
 }

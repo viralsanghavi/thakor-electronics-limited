@@ -23,11 +23,11 @@ const companies = [
 
 const slides = [
   {
-    id: 1,
-    image:
-      "https://video.wixstatic.com/video/11062b_2b14ae101c714f9ea54f1c0b0d5e4a47/1080p/mp4/file.mp4",
-    title: "Welcome to Our Platform",
-    description: "Discover amazing features and boost your productivity.",
+    id: 4,
+    image: "mission.webp",
+    title: "Components that assure circuit protection with precision",
+    description:
+      "At Thakor Electronics, we lead in high-quality passive electronic components, made with precision in India. We prioritize innovation, sustainability, and reliability, ensuring superior performance for our customers and building lasting global partnerships through ethical practices",
   },
   {
     id: 2,
