@@ -2,7 +2,6 @@
 
 import {useState, useEffect, useCallback} from "react";
 import {cn} from "~/lib/utils";
-import {Tabs, TabsList, TabsTrigger} from "~/components/ui/tabs";
 
 interface Slide {
   id: number;
@@ -40,26 +39,40 @@ export function ImageSlider({slides, interval = 5000}: ImageSliderProps) {
             )}
           >
             {!slide.image.includes(".mp4") ? (
+              // Image background
               <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{backgroundImage: `url(${slide.image})`}}
               />
             ) : (
-              <div className="ml-auto w-[65%] absolute top-0 right-0 inset-0 h-full z-20">
-                <video className="right-0" autoPlay={true} muted loop>
+              // Video background
+              <div className="absolute inset-0 h-full z-10">
+                <video
+                  className="h-full w-full object-cover"
+                  autoPlay={true}
+                  muted
+                  loop
+                  playsInline
+                >
                   <source src={slide.image} />
                   Your browser does not support the video tag.
                 </video>
               </div>
             )}
-            <div className="absolute inset-0 bg-black bg-opacity-50" />
-            <div className="absolute z-0 inset-0 bg-white w-[35%]" />
-            <div className="absolute inset-y-0 left-0 flex items-center p-4 sm:p-6 md:p-8 text-[#185BAA] max-w-[90%] sm:max-w-[80%] md:max-w-lg">
-              <div>
-                <h2 className="text-lg sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 text-[#185BAA]">
+
+            {/* Dark overlay - higher opacity on mobile for better text readability */}
+            <div className="absolute inset-0 bg-black bg-opacity-60 md:bg-opacity-50 z-20" />
+
+            {/* White background for text */}
+            <div className="absolute inset-y-0 left-0 w-full md:w-[35%] bg-white opacity-90 z-30" />
+
+            {/* Content */}
+            <div className="absolute inset-0 flex items-center p-4 sm:p-6 md:p-8 z-40">
+              <div className="w-full md:max-w-[35%] text-center md:text-left">
+                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-4 text-[#185BAA] pr-4">
                   {slide.title}
                 </h2>
-                <p className="text-sm sm:text-base md:text-lg text-[#185BAA]">
+                <p className="text-sm sm:text-base md:text-lg text-[#185BAA] line-clamp-3 sm:line-clamp-none pr-8">
                   {slide.description}
                 </p>
               </div>
@@ -67,34 +80,22 @@ export function ImageSlider({slides, interval = 5000}: ImageSliderProps) {
           </div>
         ))}
       </div>
-      {/* <Tabs
-        value={currentSlide.toString()}
-        onValueChange={(value) => setCurrentSlide(Number.parseInt(value))}
-        className="h-full "
-      >
-        <TabsList
-          className={`mt-4 grid w-full grid-cols-1 ${
-            slides.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-4"
-          } gap-8 bg-transparent h-full`}
-        >
-          {slides.map((slide, index) => (
-            <TabsTrigger
-              key={slide.id}
-              value={index.toString()}
-              className="data-[state=active]:bg-white border-t-8 data-[state=active]:text-[#185BAA] data-[state=active]:border-[#185BAA] hover:bg-[#F8AC02] transition-all ease-out duration-1000 hover:text-[#185BAA] text-[#185BAA] flex flex-col items-start p-2 sm:p-3 overflow-hidden"
-            >
-              <div className="text-left">
-                <div className="font-bold text-sm sm:text-3xl leading-loose mb-2">
-                  {slide.title}
-                </div>
-                <div className="text-xs sm:text-sm truncate overflow-hidden line-clamp-1 text-ellipsis">
-                  {slide.description}
-                </div>
-              </div>
-            </TabsTrigger>
-          ))}
-        </TabsList>
-      </Tabs> */}
+
+      {/* Navigation bars */}
+      <div className="flex justify-center items-center mt-4 space-x-3">
+        {slides.map((slide, index) => (
+          <button
+            key={slide.id}
+            onClick={() => setCurrentSlide(index)}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              currentSlide === index
+                ? "bg-[#185BAA] w-12 sm:w-16"
+                : "bg-gray-300 w-5 sm:w-6 hover:bg-[#F8AC02]"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
     </div>
   );
 }

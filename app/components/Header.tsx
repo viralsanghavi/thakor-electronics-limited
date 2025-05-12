@@ -1,5 +1,5 @@
-import {NavLink} from "@remix-run/react";
-import {HamIcon, Menu, Phone} from "lucide-react";
+import {NavLink, useLocation} from "@remix-run/react";
+import {Menu, Phone} from "lucide-react";
 import {
   Drawer,
   DrawerContent,
@@ -9,13 +9,14 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "./ui/drawer";
-import {Button} from "./ui/button";
+import {cn} from "~/lib/utils";
 
 const Header = () => {
+  const location = useLocation();
   return (
     <header className="bg-white text-black">
       <div className="lg:container mx-auto p-4 flex items-center justify-between">
-        <div className="flex items-center gap-20">
+        <div className="flex items-center gap-4">
           <NavLink to="/">
             <img
               src="/logo.jpg"
@@ -31,25 +32,45 @@ const Header = () => {
             />
           </NavLink>
         </div>
-        <div className="lg:flex items-center gap-20 hidden">
-          <div className="flex gap-8 items-center font-bold text-lg">
+        <div className="lg:flex items-center gap-20 justify-between hidden">
+          <div className="flex gap-4 items-center font-bold text-sm md:text-lg">
             <NavLink to="/">
-              <p className="text-black hover:underline-offset-4 hover:underline">
+              <p
+                className={cn(
+                  "text-black hover:underline-offset-4 hover:underline",
+                  location.pathname === "/" && "underline"
+                )}
+              >
                 Home
               </p>
             </NavLink>
             <NavLink to="/about">
-              <p className="text-black hover:underline-offset-4 hover:underline">
+              <p
+                className={cn(
+                  "text-black hover:underline-offset-4 hover:underline",
+                  location.pathname === "/about" && "underline"
+                )}
+              >
                 About
               </p>
             </NavLink>
             <NavLink to="/contact">
-              <p className="text-black hover:underline-offset-4 hover:underline">
+              <p
+                className={cn(
+                  "text-black hover:underline-offset-4 hover:underline whitespace-nowrap",
+                  location.pathname === "/contact" && "underline"
+                )}
+              >
                 Contact Us
               </p>
             </NavLink>
             <NavLink to="/catalogue">
-              <p className="text-black hover:underline-offset-4 hover:underline">
+              <p
+                className={cn(
+                  "text-black hover:underline-offset-4 hover:underline",
+                  location.pathname === "/catalogue" && "underline"
+                )}
+              >
                 Products
               </p>
             </NavLink>

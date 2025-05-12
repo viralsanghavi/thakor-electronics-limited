@@ -6,20 +6,20 @@ import {NavLink} from "@remix-run/react";
 const Hero = () => {
   const lister = [
     {
-      title: 3000,
-      desc: "Marketing strategies",
+      title: 500,
+      desc: "Products",
     },
     {
-      title: 1000,
-      desc: "Campaigns",
+      title: 200,
+      desc: "No. of Customers",
+    },
+    {
+      title: 25,
+      desc: "Years of Experience",
     },
     {
       title: 9,
-      desc: "Years Experience",
-    },
-    {
-      title: 6,
-      desc: "Platforms managed",
+      desc: "No. of industries",
     },
   ];
   const [isVisible, setIsVisible] = useState(false);
@@ -58,7 +58,7 @@ const Hero = () => {
         <div className="flex gap-8 flex-wrap items-center justify-center">
           <div className="flex-[.4]">
             <h1 className="font-bold text-2xl mb-8 text-center md:text-left">
-              We connect people with technology that makes life better
+              Your partner in circuit protection and precision{" "}
             </h1>
             <NavLink to="/about">
               <Button variant="default" className="p-6">

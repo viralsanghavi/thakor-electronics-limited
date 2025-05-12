@@ -19,6 +19,7 @@ const companies = [
   {name: "ABB", logo: "abb.png"},
   {name: "Bharat Electronics", logo: "bharat-electronics.png"},
   {name: "Tata", logo: "/tata.png"},
+  {name: "Hindustan Unilever", logo: "/uniliver.jpeg"},
 ];
 
 const slides = [
@@ -60,7 +61,7 @@ export default function Index() {
         description="We're proud to work with some of the most innovative companies in the world, helping them achieve their goals and drive success."
         companies={companies}
       />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Footer />
     </div>
   );

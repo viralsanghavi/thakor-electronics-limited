@@ -48,7 +48,7 @@ const menuItems = [
     url: "other",
     items: [
       {title: "Thermistors", url: "thermistors"},
-      {title: "GDT", url: "gdt"},
+      {title: "Gds Discharge Tube(GDT)", url: "gdt"},
     ],
   },
 ];
@@ -103,18 +103,18 @@ function CollapsibleMenuItem({item}: {item: (typeof menuItems)[number]}) {
       <CollapsibleTrigger asChild>
         <SidebarMenuButton className="h-auto">
           {item.icon && <item.icon className="h-20 w-20" />}
-          <span className="text-2xl">{item.title}</span>
+          <span className="text-2xl h-auto">{item.title}</span>
           <ChevronDown className="ml-20 h-20 w-20" />
         </SidebarMenuButton>
       </CollapsibleTrigger>
       <CollapsibleContent>
         <SidebarMenuSub>
           {item.items?.map((subItem) => (
-            <SidebarMenuSubItem key={subItem.title}>
+            <SidebarMenuSubItem key={subItem.title} className="h-auto p-1">
               <SidebarMenuSubButton asChild>
                 <NavLink
                   to={{search: `category=${subItem.url}`}}
-                  className="text-2xl"
+                  className="text-2xl h-auto"
                 >
                   {subItem.title}
                 </NavLink>

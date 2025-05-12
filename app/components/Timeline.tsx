@@ -1,89 +1,115 @@
 "use client";
 
 import {useRef} from "react";
-import {motion, useScroll} from "framer-motion";
+import {motion, useScroll, useTransform} from "framer-motion";
 import {
   CircuitBoard,
-  Cpu,
-  Zap,
-  Globe,
+  Building,
+  Users,
+  ShoppingBag,
+  CheckCircle,
+  Factory,
+  Cog,
   Award,
-  BarChart3,
+  Sun,
+  Globe,
   ChevronDown,
 } from "lucide-react";
 
 const timelineEvents = [
   {
-    year: "2009",
-    title: "Company Founded",
-    description:
-      "Thakor Electronics was established as a small distributor of electronic components.",
-    icon: <CircuitBoard className="h-5 w-5" />,
+    year: "2001",
+    title: "Foundation of Excellence",
+    description: "Acquisition of Thermax Electronics Ltd",
+    content:
+      "We began our journey by acquiring one of India's most specialized resistor manufacturing plants, forming the technical backbone for our future.",
+    icon: <Building className="h-5 w-5" />,
   },
   {
-    year: "2011",
-    title: "Expanded Product Line",
-    description:
-      "Added Varistors and MOVs to our growing catalog of electronic components.",
-    icon: <Cpu className="h-5 w-5" />,
+    year: "2002",
+    title: "Strengthening Operations",
+    description: "Infrastructure Upgrade & Team Formation",
+    content:
+      "Focused on upgrading infrastructure and assembling a skilled team to prepare for product development and market entry.",
+    icon: <Users className="h-5 w-5" />,
   },
   {
-    year: "2013",
-    title: "New Headquarters",
+    year: "2004",
+    title: "Brand Launch & Market Entry",
     description:
-      "Moved to a larger facility to accommodate our expanding inventory and team.",
-    icon: <Zap className="h-5 w-5" />,
+      "Thakor Electronics Ltd. Established & Trusted by Industry Leaders",
+    content:
+      "The brand was officially launched, and we began supplying to top companies like Tata Motors, Bajaj Auto, Star Engineers, and Flash Motors Group.",
+    icon: <ShoppingBag className="h-5 w-5" />,
   },
   {
-    year: "2015",
-    title: "International Expansion",
-    description:
-      "Started exporting products to international markets, becoming a global supplier.",
-    icon: <Globe className="h-5 w-5" />,
+    year: "2008",
+    title: "Focus on Quality & Efficiency",
+    description: "Implementation of Advanced Testing & Process Improvements",
+    content:
+      "Introduced stricter quality checks and streamlined production processes to ensure high performance and reliability.",
+    icon: <CheckCircle className="h-5 w-5" />,
+  },
+  {
+    year: "2012",
+    title: "Capacity Expansion",
+    description: "Scale-Up to Meet Growing Demand",
+    content:
+      "Expanded our manufacturing lines and workforce to support increased demand from clients across India.",
+    icon: <Factory className="h-5 w-5" />,
+  },
+  {
+    year: "2014",
+    title: "Automation Leap",
+    description: "Installation of New Machines & Coating Line",
+    content:
+      "Added new automated equipment and a coating line, boosting efficiency and consistency in factory operations.",
+    icon: <Cog className="h-5 w-5" />,
   },
   {
     year: "2017",
-    title: "Quality Certification",
-    description:
-      "Received ISO certification for our commitment to quality management systems.",
+    title: "Market Leadership",
+    description: "India's Largest Through-Hole Resistor Manufacturer",
+    content:
+      "Recognized as the biggest manufacturer in our category, achieving the highest revenue for through-hole resistors in India.",
     icon: <Award className="h-5 w-5" />,
   },
   {
-    year: "2019",
-    title: "10th Anniversary",
-    description:
-      "Celebrated a decade of excellence with the launch of our premium component line.",
-    icon: <Zap className="h-5 w-5" />,
-  },
-  {
-    year: "2021",
-    title: "E-commerce Platform",
-    description:
-      "Launched our online ordering system to streamline the purchasing process.",
-    icon: <BarChart3 className="h-5 w-5" />,
-  },
-  {
-    year: "2023",
-    title: "Sustainability Initiative",
-    description:
-      "Implemented eco-friendly packaging and sustainable business practices.",
-    icon: <Zap className="h-5 w-5" />,
+    year: "2022",
+    title: "Going Green",
+    description: "Installation of 150 kWp Rooftop Solar System",
+    content:
+      "Took a major step toward clean energy by installing a rooftop solar system, reducing operational carbon impact.",
+    icon: <Sun className="h-5 w-5" />,
   },
   {
     year: "2024",
-    title: "15th Anniversary",
-    description:
-      "Celebrating 15 years of growth, innovation, and trusted partnerships.",
-    icon: <Award className="h-5 w-5" />,
+    title: "Product Diversification & Global Certification",
+    description: "Launch of MOV, NTC & GDT | Achieved UL Certification",
+    content:
+      "We expanded into MOV, NTC, and GDT product range to serve wider industrial applications, and proudly received UL approval, marking our commitment to global quality and safety standards.",
+    icon: <Globe className="h-5 w-5" />,
   },
 ];
 
 export default function Timeline() {
   const ref = useRef(null);
+  const containerRef = useRef(null) as any;
+
+  // Modified scroll settings with a more precise offset
   const {scrollYProgress} = useScroll({
     target: ref,
-    offset: ["start end", "end start"],
+    offset: ["start end", "end 90%"],
+    container: containerRef.current,
   });
+
+  // Transform the scroll progress to ensure it reaches 1 at the right time
+  // but still allows retracting when scrolling back up
+  const lineProgress = useTransform(
+    scrollYProgress,
+    [0, 0.85, 0.95],
+    [0, 0.9, 1]
+  );
 
   return (
     <section ref={ref} className="relative py-24 overflow-hidden">
@@ -142,13 +168,7 @@ export default function Timeline() {
                 zIndex: 0,
               }}
             >
-              <img
-                src={`/electronic-component-${(i % 5) + 1}.png`}
-                alt="Electronic component"
-                width={40}
-                height={40}
-                className="opacity-20"
-              />
+              <CircuitBoard className="h-10 w-10 opacity-20 text-[#185BAA]" />
             </motion.div>
           ))}
         </div>
@@ -158,7 +178,10 @@ export default function Timeline() {
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent"></div>
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8"
+        ref={containerRef}
+      >
         <motion.div
           initial={{opacity: 0, y: 20}}
           whileInView={{opacity: 1, y: 0}}
@@ -166,12 +189,15 @@ export default function Timeline() {
           viewport={{once: true}}
           className="mx-auto mb-16 max-w-3xl text-center"
         >
-          <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">
+            {/* <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-[#185BAA]"> */}
             Our Journey
-          </h2>
+          </h1>
+          <div className="h-1 w-16 bg-[#185BAA] mx-auto mb-8"></div>
+
           <p className="text-lg text-muted-foreground">
-            From humble beginnings to industry leadership, explore the key
-            milestones that have shaped our 15-year journey.
+            From acquisition to industry leadership, explore the key milestones
+            that have shaped our remarkable journey since 2001.
           </p>
 
           {/* Added animated scroll indicator */}
@@ -183,30 +209,29 @@ export default function Timeline() {
             <ChevronDown className="h-6 w-6 text-muted-foreground" />
           </motion.div>
         </motion.div>
-
         <div className="relative mx-auto max-w-5xl">
-          {/* Timeline line with enhanced styling */}
+          {/* Timeline line with enhanced styling - using lineProgress */}
           <motion.div
-            className="absolute left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-600 to-purple-600 sm:left-1/2 sm:-ml-0.5 rounded-full shadow-[0_0_10px_rgba(79,70,229,0.5)]"
+            className="absolute left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-[#185BAA] to-[#F8AC02] sm:left-1/2 sm:-ml-0.5 rounded-full shadow-[0_0_10px_rgba(24,91,170,0.5)]"
             style={{
-              scaleY: scrollYProgress,
+              scaleY: lineProgress,
               originY: 0,
             }}
           />
 
           {/* Added decorative circuit nodes along timeline */}
           <div className="absolute left-4 top-[10%] sm:left-1/2 sm:-ml-3">
-            <div className="h-5 w-5 rounded-full bg-blue-500/20 animate-ping"></div>
+            <div className="h-5 w-5 rounded-full bg-[#185BAA]/20 animate-ping"></div>
           </div>
           <div className="absolute left-4 top-[40%] sm:left-1/2 sm:-ml-3">
             <div
-              className="h-5 w-5 rounded-full bg-purple-500/20 animate-ping"
+              className="h-5 w-5 rounded-full bg-[#F8AC02]/20 animate-ping"
               style={{animationDelay: "1s"}}
             ></div>
           </div>
           <div className="absolute left-4 top-[70%] sm:left-1/2 sm:-ml-3">
             <div
-              className="h-5 w-5 rounded-full bg-blue-500/20 animate-ping"
+              className="h-5 w-5 rounded-full bg-[#185BAA]/20 animate-ping"
               style={{animationDelay: "2s"}}
             ></div>
           </div>
@@ -221,7 +246,7 @@ export default function Timeline() {
                   whileInView={{scale: 1}}
                   transition={{duration: 0.5, delay: 0.2}}
                   viewport={{once: true}}
-                  className={`absolute left-4 -ml-3.5 flex h-7 w-7 items-center justify-center rounded-full border-4 border-background bg-gradient-to-r from-blue-600 to-purple-600 shadow-[0_0_10px_rgba(79,70,229,0.5)] z-10 sm:left-1/2`}
+                  className={`absolute left-12 -ml-3.5 flex h-7 w-7 items-center justify-center rounded-full border-4 border-background bg-gradient-to-r from-[#185BAA] to-[#F8AC02] shadow-[0_0_10px_rgba(24,91,170,0.5)] z-10 sm:left-1/2`}
                 >
                   <span className="text-white">{event.icon}</span>
                 </motion.div>
@@ -229,7 +254,7 @@ export default function Timeline() {
                 {/* Content */}
                 <div
                   className={`relative flex flex-col items-start sm:flex-row ${
-                    index % 2 === 0 ? "sm:flex-row-reverse" : ""
+                    index % 2 === 0 ? "sm:flex-row-reverse ml-8" : "mr-8"
                   }`}
                 >
                   <motion.div
@@ -262,23 +287,31 @@ export default function Timeline() {
                         </svg>
                       </div>
 
-                      <span className="inline-block rounded-full bg-gradient-to-r from-blue-600/20 to-purple-600/20 px-3 py-1 text-sm font-semibold text-blue-700">
-                        {event.year}
-                      </span>
-                      <h3 className="mt-2 text-xl font-semibold">
-                        {event.title}
+                      {/* Year - Title format */}
+                      <h3 className="text-xl font-semibold text-[#185BAA]">
+                        <span className="inline-block rounded-full bg-gradient-to-r from-[#185BAA]/20 to-[#F8AC02]/20 px-3 py-1 text-sm font-semibold text-[#185BAA] mr-2">
+                          {event.year}
+                        </span>
+                        – {event.title}
                       </h3>
-                      <p className="mt-1 text-muted-foreground">
+
+                      {/* Description as a separate element */}
+                      <p className="mt-2 font-medium text-[#185BAA]">
                         {event.description}
                       </p>
 
+                      {/* Additional content */}
+                      <p className="mt-1 text-muted-foreground">
+                        {event.content}
+                      </p>
+
                       {/* Added subtle highlight effect */}
-                      <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-blue-600/40 to-purple-600/40 opacity-50"></div>
+                      <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-[#185BAA]/40 to-[#F8AC02]/40 opacity-50"></div>
                     </div>
 
                     {/* Added connecting lines between timeline and content */}
                     <div
-                      className={`absolute top-3.5 h-0.5 bg-gradient-to-r from-blue-600/50 to-purple-600/50 hidden sm:block ${
+                      className={`absolute top-3.5 h-0.5 bg-gradient-to-r from-[#185BAA]/50 to-[#F8AC02]/50 hidden sm:block ${
                         index % 2 === 0 ? "right-full w-8" : "left-full w-8"
                       }`}
                     ></div>
@@ -293,47 +326,17 @@ export default function Timeline() {
             initial={{scale: 0}}
             whileInView={{scale: 1}}
             transition={{duration: 0.5, delay: 0.2}}
-            viewport={{once: true}}
-            className="absolute bottom-0 left-4 sm:left-1/2 sm:-ml-5 flex h-10 w-10 items-center justify-center rounded-full border-4 border-background bg-gradient-to-r from-blue-600 to-purple-600 shadow-[0_0_15px_rgba(79,70,229,0.6)] z-10"
+            viewport={{once: true, margin: "-50px"}}
+            className="absolute bottom-0 left-4 sm:left-1/2 sm:-ml-5 flex h-10 w-10 items-center justify-center rounded-full border-4 border-background bg-gradient-to-r from-[#185BAA] to-[#F8AC02] shadow-[0_0_15px_rgba(24,91,170,0.6)] z-10"
           >
             <span className="text-white text-xs font-bold">2024</span>
           </motion.div>
         </div>
-
-        {/* Added statistics section to fill space at bottom */}
-        <motion.div
-          initial={{opacity: 0, y: 20}}
-          whileInView={{opacity: 1, y: 0}}
-          transition={{duration: 0.8}}
-          viewport={{once: true}}
-          className="mt-24 grid grid-cols-2 gap-4 sm:grid-cols-4 max-w-4xl mx-auto"
-        >
-          <div className="rounded-lg border bg-background/80 backdrop-blur-sm p-4 text-center">
-            <div className="text-3xl font-bold text-blue-600">15+</div>
-            <div className="text-sm text-muted-foreground">
-              Years of Excellence
-            </div>
-          </div>
-          <div className="rounded-lg border bg-background/80 backdrop-blur-sm p-4 text-center">
-            <div className="text-3xl font-bold text-purple-600">1000+</div>
-            <div className="text-sm text-muted-foreground">Products</div>
-          </div>
-          <div className="rounded-lg border bg-background/80 backdrop-blur-sm p-4 text-center">
-            <div className="text-3xl font-bold text-blue-600">50+</div>
-            <div className="text-sm text-muted-foreground">
-              Countries Served
-            </div>
-          </div>
-          <div className="rounded-lg border bg-background/80 backdrop-blur-sm p-4 text-center">
-            <div className="text-3xl font-bold text-purple-600">500+</div>
-            <div className="text-sm text-muted-foreground">B2B Clients</div>
-          </div>
-        </motion.div>
       </div>
 
       {/* Enhanced decorative elements */}
-      <div className="pointer-events-none absolute bottom-10 left-10 h-60 w-60 rounded-full bg-blue-500/10 blur-3xl"></div>
-      <div className="pointer-events-none absolute top-10 right-10 h-60 w-60 rounded-full bg-purple-500/10 blur-3xl"></div>
+      <div className="pointer-events-none absolute bottom-10 left-10 h-60 w-60 rounded-full bg-[#185BAA]/10 blur-3xl"></div>
+      <div className="pointer-events-none absolute top-10 right-10 h-60 w-60 rounded-full bg-[#F8AC02]/10 blur-3xl"></div>
     </section>
   );
 }

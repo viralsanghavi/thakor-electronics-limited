@@ -15,8 +15,8 @@ export function Footer() {
               Thakor Electronics
             </h2>
             <p className="text-sm">
-              Your trusted B2B wholesaler for electronic components and
-              solutions since 1995.
+              Your trusted B2B partner for electronic components and solutions
+              since 2001.
             </p>
             <div className="flex mt-4 space-x-4">
               <NavLink to="#" className="hover:text-white">
@@ -118,7 +118,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter Signup */}
+          {/* Newsletter Signup
           <div>
             <h3 className="text-white text-lg font-semibold mb-4">
               Stay Updated
@@ -137,7 +137,7 @@ export function Footer() {
                 Subscribe
               </Button>
             </form>
-          </div>
+          </div> */}
         </div>
 
         <Separator className="my-8 bg-gray-700" />

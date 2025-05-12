@@ -114,7 +114,7 @@ const Contact = () => {
                     htmlFor="message"
                     className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
                   >
-                    Message
+                    Message/Inquiry
                   </label>
                   <Textarea
                     id="message"
@@ -131,7 +131,9 @@ const Contact = () => {
             </div>
           </div>
           <Card className="p-8 max-w-xl">
-            <h3 className="font-bold text-xl mb-4">CORPORATE/FACTORY HEADQUARTERS</h3>
+            <h3 className="font-bold text-xl mb-4">
+              CORPORATE/FACTORY HEADQUARTERS
+            </h3>
             <ul className="space-y-2">
               <li className="flex items-center">
                 <Mail size={16} className="mr-2" />

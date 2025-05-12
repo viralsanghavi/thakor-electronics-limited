@@ -28,6 +28,12 @@ export function MeetOurTeam({
       linkedin: "https://linkedin.com/in/johndoe",
     },
     {
+      name: "Mr. Sachin Shah",
+      position: "Director",
+      twitter: "https://twitter.com/janesmith",
+      linkedin: "https://linkedin.com/in/janesmith",
+    },
+    {
       name: "Mr. Viraj Shah",
       position: "Director of Business Development",
       twitter: "https://twitter.com/janesmith",
@@ -59,7 +65,7 @@ export function MeetOurTeam({
             {description}
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-12">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 mt-12">
           {team.map((member) => (
             <Card
               key={member.name}
