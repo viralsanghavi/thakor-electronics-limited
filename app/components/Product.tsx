@@ -13,6 +13,7 @@ import {
 const Product = ({
   imgUrl = "products/res.webp",
   productName = "Square 25s",
+  desc = "",
 }) => {
   return (
     <div>
@@ -22,7 +23,7 @@ const Product = ({
             src={imgUrl}
             fallback="products/product.png"
             alt={imgUrl}
-            className="mb-4 w-64 h-64 cursor-pointer object-contain bg-white rounded-sm"
+            className="mb-4 w-64 h-64 cursor-pointer object-cover bg-white rounded-sm"
           />
 
           <p className="text-base font-normal">{productName}</p>
@@ -31,12 +32,18 @@ const Product = ({
           <DrawerHeader>
             <DrawerTitle className="text-6xl">{productName}</DrawerTitle>
             <DrawerDescription>
-              <ImageWithFallback
-                src={imgUrl}
-                fallback="products/product.png"
-                alt={imgUrl}
-                className="mb-4 w-96 h-9w-96 cursor-pointer object-contain bg-white rounded-sm"
-              />
+              <div className="flex space-x-40 items-center">
+                <ImageWithFallback
+                  src={imgUrl}
+                  fallback="products/product.png"
+                  alt={imgUrl}
+                  className="mb-4 w-96 h-96 cursor-pointer object-cover bg-white rounded-sm"
+                />
+                {/* <pre className="text-black justify-self-start align-top items-start justify-items-start text-start text-base"> */}
+                <pre className="whitespace-pre-wrap break-words font-sans text-lg leading-6">
+                  {desc}
+                </pre>
+              </div>
             </DrawerDescription>
           </DrawerHeader>
           <DrawerFooter>

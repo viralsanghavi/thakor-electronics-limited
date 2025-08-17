@@ -10,10 +10,19 @@ const ProductListing = () => {
   const selectedCategory = searchParam.get("category") || "";
 
   // Memoize filtered products to avoid recalculating on every render
+
   const filteredProducts = useMemo(
     () =>
       selectedCategory && selectedCategory !== "all"
-        ? products.filter((p) => p.collection.includes(selectedCategory || ""))
+        ? products.filter((p) =>
+            p.collection
+              .split(";")
+              .some(
+                (cat) =>
+                  cat.toLocaleLowerCase().trim() ===
+                  selectedCategory.toLocaleLowerCase()
+              )
+          )
         : products,
     [products, selectedCategory]
   );
@@ -32,6 +41,7 @@ const ProductListing = () => {
             <Product
               productName={product.name}
               key={product.handleId}
+              desc={product.description}
               imgUrl={product.productImageUrl ?? ""}
             />
           ))

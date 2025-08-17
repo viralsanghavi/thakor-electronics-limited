@@ -177,9 +177,9 @@ const Contact = () => {
                   referrerPolicy="no-referrer"
                   target="_blank"
                 >
-                  P-2, Shree Raj Laxmi Hi-Tech Textile Park, P-1, Bye Pass
-                  Village:, Sonale Tal:Bhiwandi, Bhiwandi, Shivnagar,
-                  Maharashtra 421308
+                  P-1, P-2, 1st floor, Shree Raj Laxmi Hi-Tech Textile Park,
+                  P-1, Sonale Village, Bhiwandi, District Thane, Maharashtra
+                  421302
                 </a>
               </li>
             </ul>

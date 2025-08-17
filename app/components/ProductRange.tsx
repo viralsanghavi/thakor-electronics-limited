@@ -44,7 +44,7 @@ const ProductRange = () => {
         "A standalone component or combined with other components to make a multistage protection circuit.",
       id: crypto.randomUUID(),
       to: "/catalogue?category=gdt",
-      img: "gdt.png",
+      img: "product-range/gdt.png",
     },
     {
       productName: "NTC",

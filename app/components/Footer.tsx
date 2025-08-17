@@ -111,8 +111,20 @@ export function Footer() {
                   referrerPolicy="no-referrer"
                   target="_blank"
                 >
-                  7th Floor, B Wing, Neelkanth Corporate Park, 08, Kirol
-                  Village, W, Vidyavihar, Mumbai, Maharashtra 400086{" "}
+                  <b>Office:</b> 7th Floor, B Wing, Neelkanth Corporate Park,
+                  08, Kirol Village, W, Vidyavihar, Mumbai, Maharashtra 400086{" "}
+                </a>
+              </li>
+              <li className="flex items-start">
+                <MapPin size={36} className="mr-2" />
+                <a
+                  href="https://maps.app.goo.gl/T1sJg4hfzyXqupu99"
+                  referrerPolicy="no-referrer"
+                  target="_blank"
+                >
+                  <b>Factory:</b> P-1, P-2, 1st floor, Shree Raj Laxmi Hi-Tech
+                  Textile Park, P-1, Sonale Village, Bhiwandi, District Thane,
+                  Maharashtra 421302
                 </a>
               </li>
             </ul>

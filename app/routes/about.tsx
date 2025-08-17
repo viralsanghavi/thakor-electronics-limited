@@ -47,10 +47,7 @@ const About = () => {
             Affiliations
           </h2>
           <div className="flex items-center gap-8 flex-wrap justify-center">
-            <img
-              src="/aff-1.jpeg"
-              className="object-contain h-40 max-w-[30%]"
-            />
+            <img src="/tic.jpeg" className="object-contain h-40 max-w-[30%]" />
             <img src="/aff-2.jpeg" className="object-contain max-w-[30%]" />
           </div>
         </div>

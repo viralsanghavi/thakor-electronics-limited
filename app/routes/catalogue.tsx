@@ -30,26 +30,33 @@ const menuItems = [
     title: "Resistors",
     url: "resistors",
     items: [
-      {title: "Thick Film", url: "thick-film"},
-      {title: "Thin Film", url: "thin-film"},
+      {title: "Carfon Film Resistor (CFR)", url: "cfr"},
+      {title: "Metal Film Resistor (MFR)", url: "mfr"},
+      {title: "Metal Oxide Resistor (MOR)", url: "mor"},
+      {title: "Metal Glazed Resistor (MGR)", url: "mgr"},
+      {title: "Wire Wound Resistor (WWR)", url: "wwr"},
+      {title: "Wire Wound Resistor – Non-Inductive", url: "wwr-ni"},
+      {title: "Fusible Wire Wound Resistor (FWWR)", url: "fwwr"},
+      {title: "Metal Electrode Leadless Face Resistor (MELF)", url: "melf"},
     ],
   },
   {
-    title: "Varistors",
-    url: "varistors",
+    title: "Over Voltage Protection",
+    url: "ovp",
     items: [
-      {title: "Standard MOV", url: "smov"},
-      {title: "TMOV/TFMOV", url: "tfmov"},
-      {title: "SMD", url: "smd"},
+      {title: "Metal Oxide Varistors (MOV)", url: "mov"},
+      {title: "Thermal Metal Oxide Varistor (TMOV)", url: "tmov"},
+      {title: "Thermal Fuse Metal Oxide Varistor (TFMOV)", url: "tfmov"},
+      {title: "Surge Protection Device (SPD)", url: "spd"},
     ],
   },
   {
-    title: "Other Products",
-    url: "other",
-    items: [
-      {title: "Thermistors", url: "thermistors"},
-      {title: "Gds Discharge Tube(GDT)", url: "gdt"},
-    ],
+    title: "Negative Temperature Coefficient",
+    url: "ntc",
+  },
+  {
+    title: "Gas Discharge Tube (GDT)",
+    url: "gdt",
   },
 ];
 
@@ -73,10 +80,11 @@ const Catalogue = () => {
                         <CollapsibleMenuItem item={item} />
                       </NavLink>
                     ) : (
-                      <SidebarMenuButton asChild>
+                      <SidebarMenuButton asChild className="">
                         <NavLink to={{search: `category=${item.url}`}}>
-                          {item.icon && <item.icon className="h-20 w-20" />}
-                          <span className="ml-2 text-2xl">{item.title}</span>
+                          <p className="leading-2 text-base h-auto">
+                            {item.title}
+                          </p>
                         </NavLink>
                       </SidebarMenuButton>
                     )}
@@ -103,8 +111,8 @@ function CollapsibleMenuItem({item}: {item: (typeof menuItems)[number]}) {
       <CollapsibleTrigger asChild>
         <SidebarMenuButton className="h-auto">
           {item.icon && <item.icon className="h-20 w-20" />}
-          <span className="text-2xl h-auto">{item.title}</span>
-          <ChevronDown className="ml-20 h-20 w-20" />
+          <span className="text-base h-auto">{item.title}</span>
+          <ChevronDown className="h-20 w-20 ml-auto" />
         </SidebarMenuButton>
       </CollapsibleTrigger>
       <CollapsibleContent>
@@ -114,7 +122,7 @@ function CollapsibleMenuItem({item}: {item: (typeof menuItems)[number]}) {
               <SidebarMenuSubButton asChild>
                 <NavLink
                   to={{search: `category=${subItem.url}`}}
-                  className="text-2xl h-auto"
+                  className="text-base h-auto"
                 >
                   {subItem.title}
                 </NavLink>
