@@ -2,6 +2,7 @@ import {useSearchParams} from "@remix-run/react";
 import {useMemo} from "react";
 import {useProducts} from "~/hooks/useProducts";
 import Product from "./Product";
+import {Button} from "./ui/button";
 
 const ProductListing = () => {
   const products = useProducts();
@@ -27,9 +28,22 @@ const ProductListing = () => {
     [products, selectedCategory]
   );
 
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = `https://drive.google.com/uc?export=download&id=${
+      import.meta.env.VITE_CATALOGUE_ID
+    }`;
+
+    link.download = "catalogue.pdf"; // Default file name
+    link.click();
+  };
+
   return (
     <div>
-      <h1 className="font-bold text-4xl mb-8">All Products</h1>
+      <div className="flex justify-between items-center mb-8 w-full">
+        <h1 className="font-bold text-4xl">All Products</h1>
+        <Button onClick={handleDownload}>View Full Catalogue</Button>
+      </div>
       <div className="mb-4">
         <p className="text-sm font-normal">
           {filteredProducts.length ?? 0} products
